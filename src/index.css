@@ -1,0 +1,84 @@
+:root {
+    --bg: #0a1d22;
+    --surface: #11303a;
+    --line: #24505c;
+    --text: #e8f3f1;
+    --muted: #9fbdbd;
+    --accent: #f2c879;
+    --danger: #ff9b8a;
+    font-family: system-ui, sans-serif;
+}
+
+* { box-sizing: border-box;}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+}
+
+.app {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: grid;
+    gap: 20px;
+}
+
+h1 { margin: 0; font-family: Georgia, serif; font-weight: 400; font-size: 2.6rem; }
+
+/* search */
+.search { display: flex; gap: 8px; }
+.search input {
+    flex: 1;
+    min-width: 0;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--text);
+}
+button {
+    padding: 12px 18px;
+    border: 0;
+    border-radius: 10px;
+    background: var(--accent);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* weather card */
+.card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 24px;
+}
+.card h2 { margin: 0; }
+.temp { margin: 8px 0; font-family: Georgia, serif; font-size: 4.5rem; }
+.details { list-style: none; padding: 16px 0 0; margin: 16px 0 0; border-top: 1px solid var(--line); display: grid; gap: 8px; color: var(--muted); }
+
+/* loading + error */
+.status { display: grid; justify-items: center; gap: 10px; padding: 32px; border: 1px dashed var(--line); border-radius: 16px; color: var(--muted); text-align: center; }
+.status.error { border: 1px solid var(--danger); }
+.status.error h2 { margin: 0; color: var(--danger); }
+.spinner { width: 32px; height: 32px; border: 3px solid var(--line); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.9s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* phones */
+@media (max-width: 480px) {
+    h1 { font-size: 2rem; }
+    .temp { font-size: 3.5rem; }
+}
+
+.forecast { list-style: none; padding: 0; margin: 16px 0 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+.forecast-day { display: grid; justify-items: center; gap: 4px; padding: 14px 6px; border-radius: 12px; background: var(--bg); }
+.forecast-day small { color: var(--muted); }
+
+@media (max-width: 480px) {
+    .forecast { grid-template-columns: repeat(3, 1fr); }
+}
+
+.condition { margin: 0; color: var(--muted); font-size: 1.1rem; }
+.fd-icon { font-size: 1.7rem; }
